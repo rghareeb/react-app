@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { Home, Settings, LogOut, Users, BarChart3, Package, FileText, RefreshCcw, Trash2, Monitor } from "lucide-react";
+import { Home,Pill, Settings, LogOut, Users, BarChart3, Package, FileText, RefreshCcw, Trash2, Monitor,CircleUserRound,LandPlot } from "lucide-react";
 
 import { useSearchParams } from "next/navigation";
 interface HeaderProps {
@@ -50,6 +50,9 @@ return (
         {/* Sidebar */}
         <aside className="w-64 bg-gray-700 text-white flex flex-col py-4">
           <nav className="flex flex-col space-y-3 px-4">
+                <a href="/pharmacy" className="flex items-center gap-3 hover:bg-gray-600 p-2 rounded">
+              <Pill className="w-5 h-5" /> إدارة الصيدليات
+            </a>
             <a href="/drugs" className="flex items-center gap-3 hover:bg-gray-600 p-2 rounded">
               <FileText className="w-5 h-5" /> إدارة الأدوية
             </a>
@@ -61,6 +64,12 @@ return (
             </a>
             <a href="/representatives" className="flex items-center gap-3 hover:bg-gray-600 p-2 rounded">
               <Package className="w-5 h-5" /> إدارة المندوبين
+            </a>
+             <a href="/suppliers" className="flex items-center gap-3 hover:bg-gray-600 p-2 rounded">
+              <CircleUserRound className="w-5 h-5" /> إدارة المجهزين
+            </a>
+             <a href="/districts" className="flex items-center gap-3 hover:bg-gray-600 p-2 rounded">
+              <LandPlot className="w-5 h-5" /> إدارة المناطق
             </a>
             <a href="/settings" className="flex items-center gap-3 hover:bg-gray-600 p-2 rounded">
               <RefreshCcw className="w-5 h-5" /> الإعدادات

@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "198.54.125.174",
+            "port": 21098,
+            "driver": "MariaDB",
+            "name": "connectToServer",
+            "database": "mrcoycdg_drugwarehouse",
+            "username": "mrcoycdg_developer"
+        }
+    ]
+}

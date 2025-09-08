@@ -1,7 +1,36 @@
 import { NextResponse } from "next/server";
-import { connectToDatabase } from "@/lib/db";  // your db connection helper
+import { connectToDatabase } from "@/lib/db"; 
 import path from "path";
 import fs from "fs/promises";
+// Get all drugs
+export async function GET() {
+  try {
+    const db = await connectToDatabase();
+    const [rows] = await db.query("SELECT * FROM medicines");
+    return NextResponse.json(rows);
+  }
+
+  catch (error) {
+    console.error(error);
+    return NextResponse.json({ error: "Server error" }, { status: 500 });
+  }
+}
+export async function DELETE(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+    console.log("Deleting drug with ID:", id);
+    if (!id) {
+      return NextResponse.json({ error: "Missing id" }, { status: 400 });
+    }
+    const db = await connectToDatabase();
+    await db.query("DELETE FROM medicines WHERE medicineid = ?", [id]);
+    return NextResponse.json({ message: "Drug deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ error: "Server error" }, { status: 500 });
+  }
+}
 // POST 
 export async function POST(req: Request) {
   try {
